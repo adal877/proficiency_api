@@ -6,6 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import jakarta.annotation.PreDestroy;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
