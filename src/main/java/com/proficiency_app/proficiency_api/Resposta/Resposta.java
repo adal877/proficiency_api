@@ -30,7 +30,7 @@ public class Resposta {
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id")
-    private UUID id;
+    private String id;
 
     @Lob
     private String texto;
