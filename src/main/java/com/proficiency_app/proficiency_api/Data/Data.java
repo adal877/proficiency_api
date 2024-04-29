@@ -42,7 +42,7 @@ public class Data {
     private Date updated_at;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "record_type")
+    @Column(name = "record_type", nullable = false)
     private DataType record_type;
 
     @Column(name = "is_active", nullable = false)
@@ -52,6 +52,7 @@ public class Data {
     protected void onCreate() {
         created_at = new Date();
         updated_at = new Date();
+        is_active  = true;
     }
 
     @PreUpdate

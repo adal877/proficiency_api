@@ -28,4 +28,12 @@ public class ProfessorService {
     public List<Professor> findAll() {
         return professorRepository.findAll();
     }
+
+    public List<Professor> saveAll(List<Professor> professors) {
+        return professorRepository.saveAll(professors);
+    }
+
+    public Professor save(Professor professor) {
+        return professorRepository.save(professor);
+    }
 }

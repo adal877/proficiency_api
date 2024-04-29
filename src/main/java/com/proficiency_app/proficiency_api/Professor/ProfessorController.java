@@ -1,4 +1,4 @@
-package com.proficiency_app.proficiency_api.Disciplina;
+package com.proficiency_app.proficiency_api.Professor;
 
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,23 +28,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/api")
-public class DisciplinaController {
+public class ProfessorController {
     @Autowired
-    DisciplinaService disciplinaService;
+    ProfessorService professorService;
 
-    public DisciplinaController(
-        DisciplinaService disciplinaService
+    public ProfessorController(
+        ProfessorService professorService
     ) {
-        this.disciplinaService = disciplinaService;
+        this.professorService = professorService;
     }
 
-    @GetMapping("/disciplinas")
-    public ResponseEntity<?> getDisciplinas() {
+    @GetMapping("/professores")
+    public ResponseEntity<?> getProfessors() {
         try {
             return ResponseEntity
                 .ok()
                 .body(
-                    disciplinaService.findAll()
+                    professorService.findAll()
                 );
         } catch(Exception ex) {
             return ResponseEntity
@@ -55,15 +55,15 @@ public class DisciplinaController {
         }
     }
 
-    @GetMapping("/disciplinas/{id}")
-    public ResponseEntity<?> getDisciplina(@PathVariable String id) {
+    @GetMapping("/professores/{id}")
+    public ResponseEntity<?> getProfessor(@PathVariable String id) {
         DataResponse response = new DataResponse();
         try {
             response.setMessage("Found data");
             response.setCode(HttpStatus.FOUND.value());
             response.setData(
                 Arrays.asList(
-                    disciplinaService.findById(id)
+                    professorService.findById(id)
                 )
             );
 
@@ -93,8 +93,8 @@ public class DisciplinaController {
         }
     }
 
-    @PostMapping("/disciplinas")
-    public ResponseEntity<?> postDisciplinas(@RequestBody @Valid List<Disciplina> disciplinas) {
+    @PostMapping("/professores")
+    public ResponseEntity<?> postProfessors(@RequestBody @Valid List<Professor> professors) {
         DataResponse response = new DataResponse();
 
         try {
@@ -102,7 +102,7 @@ public class DisciplinaController {
             response.setCode(HttpStatus.CREATED.value());
             response.setData(
                 Arrays.asList(
-                    disciplinaService.saveDisciplinas(disciplinas)
+                    professorService.saveAll(professors)
                 )
             );
             return ResponseEntity
@@ -133,3 +133,4 @@ public class DisciplinaController {
 
 
 }
+

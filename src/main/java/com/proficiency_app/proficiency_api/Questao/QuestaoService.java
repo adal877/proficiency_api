@@ -1,6 +1,10 @@
 package com.proficiency_app.proficiency_api.Questao;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class QuestaoService {
@@ -21,7 +25,9 @@ public class QuestaoService {
         return questaoRepository.findAll();
     }
 
+    /*
     public Optional<Questao> findByType(String tipoQuestao) {
-        return questaoRepository.findBy
+        return questaoRepository.findByTipoQuestao(tipoQuestao);
     }
+    */
 }

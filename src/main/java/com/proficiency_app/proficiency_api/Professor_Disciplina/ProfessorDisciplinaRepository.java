@@ -7,5 +7,4 @@ import java.util.Optional;
 
 public interface ProfessorDisciplinaRepository extends JpaRepository<Professor_Disciplina, ProfessorDisciplinaId> {
     Optional<Professor_Disciplina> findById(ProfessorDisciplinaId id);
-    List<Professor_Disciplina> findaAll();
 }
