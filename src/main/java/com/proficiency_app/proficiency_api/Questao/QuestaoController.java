@@ -1,4 +1,4 @@
-package com.proficiency_app.proficiency_api.Professor;
+package com.proficiency_app.proficiency_api.Questao;
 
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,23 +28,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/api")
-public class ProfessorController {
+public class QuestaoController {
     @Autowired
-    ProfessorService professorService;
+    QuestaoService questaoService;
 
-    public ProfessorController(
-        ProfessorService professorService
+    public QuestaoController(
+        QuestaoService questaoService
     ) {
-        this.professorService = professorService;
+        this.questaoService = questaoService;
     }
 
-    @GetMapping("/professores")
-    public ResponseEntity<?> getProfessors() {
+    @GetMapping("/questoes")
+    public ResponseEntity<?> getQuestoes() {
         DataResponse<?> response = new DataResponse<>();
 
         try {
             response = DataResponse.getSuccess(
-                professorService.findAll()
+                questaoService.findAll()
             );
         } catch(Exception ex) {
             response = DataResponse.getError();
@@ -57,14 +57,14 @@ public class ProfessorController {
             );
     }
 
-    @GetMapping("/professores/{id}")
-    public ResponseEntity<?> getProfessor(@PathVariable String id) {
+    @GetMapping("/questoes/{id}")
+    public ResponseEntity<?> getQuestao(@PathVariable String id) {
         DataResponse<?> response = new DataResponse<>();
 
         try {
             response = DataResponse.getSuccess(
                 Arrays.asList(
-                    professorService.findById(id)
+                    questaoService.findById(id)
                 )
             );
         } catch(Exception ex) {
@@ -78,13 +78,13 @@ public class ProfessorController {
             );
     }
 
-    @PostMapping("/professores")
-    public ResponseEntity<?> postProfessors(@RequestBody @Valid List<Professor> professors) {
+    @PostMapping("/questoes")
+    public ResponseEntity<?> postQuestaos(@RequestBody @Valid List<Questao> questaos) {
         DataResponse<?> response = new DataResponse<>();
 
         try {
             response = DataResponse.postSuccess(
-                professorService.saveAll(professors)
+                questaoService.saveAll(questaos)
             );
         } catch(Exception ex) {
             response = DataResponse.postError(
@@ -98,5 +98,5 @@ public class ProfessorController {
                 response
             );
     }
-}
 
+}

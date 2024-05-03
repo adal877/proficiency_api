@@ -17,15 +17,41 @@ public class ProvaService {
         this.provaRepository = provaRepository;
     }
 
-    public Optional<Prova> findById(String id) {
-        return provaRepository.findById(id);
+    public Optional<Prova> findById(String id) throws Exception {
+        Optional<Prova> prova = provaRepository.findById(id);
+
+        if(prova.isEmpty()) {
+            throw new Exception("Data not found");
+        }
+
+        return prova;
     }
 
-    public List<Prova> findAll() {
-        return provaRepository.findAll();
+    public List<Prova> findAll() throws Exception {
+        List<Prova> provas = provaRepository.findAll();
+
+        if(provas.isEmpty()) {
+            throw new Exception("Data not found");
+        }
+
+        return provas;
     }
 
-    public List<Prova> findProvaByProfessorId(String professor_id) {
+    public List<Prova> findByProfessorId(String professor_id) {
         return provaRepository.findByProfessorId(professor_id);
+    }
+
+    /*
+    public List<Prova> findByQuestaoId(String questao_id) {
+        return provaRepository.findByQuestaoId(questao_id);
+    }
+    */
+
+    public List<Prova> saveAll(List<Prova> provas) {
+        return provaRepository.saveAll(provas);
+    }
+
+    public Prova save(Prova prova) {
+        return provaRepository.save(prova);
     }
 }

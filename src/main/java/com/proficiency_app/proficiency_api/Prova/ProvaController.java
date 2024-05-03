@@ -1,4 +1,4 @@
-package com.proficiency_app.proficiency_api.Professor;
+package com.proficiency_app.proficiency_api.Prova;
 
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -28,23 +29,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/api")
-public class ProfessorController {
+public class ProvaController {
     @Autowired
-    ProfessorService professorService;
+    ProvaService provaService;
 
-    public ProfessorController(
-        ProfessorService professorService
+    public ProvaController(
+        ProvaService provaService
     ) {
-        this.professorService = professorService;
+        this.provaService = provaService;
     }
 
-    @GetMapping("/professores")
-    public ResponseEntity<?> getProfessors() {
+    @GetMapping("/provas")
+    public ResponseEntity<?> getProvas() {
         DataResponse<?> response = new DataResponse<>();
 
         try {
             response = DataResponse.getSuccess(
-                professorService.findAll()
+                provaService.findAll()
             );
         } catch(Exception ex) {
             response = DataResponse.getError();
@@ -57,14 +58,14 @@ public class ProfessorController {
             );
     }
 
-    @GetMapping("/professores/{id}")
-    public ResponseEntity<?> getProfessor(@PathVariable String id) {
+    @GetMapping("/provas/{id}")
+    public ResponseEntity<?> getProva(@PathVariable String id) {
         DataResponse<?> response = new DataResponse<>();
 
         try {
             response = DataResponse.getSuccess(
                 Arrays.asList(
-                    professorService.findById(id)
+                    provaService.findById(id)
                 )
             );
         } catch(Exception ex) {
@@ -78,13 +79,13 @@ public class ProfessorController {
             );
     }
 
-    @PostMapping("/professores")
-    public ResponseEntity<?> postProfessors(@RequestBody @Valid List<Professor> professors) {
+    @PostMapping("/provas")
+    public ResponseEntity<?> postProvas(@RequestBody @Valid List<Prova> provas) {
         DataResponse<?> response = new DataResponse<>();
 
         try {
             response = DataResponse.postSuccess(
-                professorService.saveAll(professors)
+                provaService.saveAll(provas)
             );
         } catch(Exception ex) {
             response = DataResponse.postError(
@@ -98,5 +99,5 @@ public class ProfessorController {
                 response
             );
     }
-}
 
+}

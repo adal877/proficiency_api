@@ -2,6 +2,7 @@ package com.proficiency_app.proficiency_api.Disciplina;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import com.proficiency_app.proficiency_api.Data.Data;
 import com.proficiency_app.proficiency_api.Data.DataResponse;
 
 import jakarta.validation.Valid;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,96 +42,63 @@ public class DisciplinaController {
 
     @GetMapping("/disciplinas")
     public ResponseEntity<?> getDisciplinas() {
+        DataResponse<?> response = new DataResponse<>();
+
         try {
-            return ResponseEntity
-                .ok()
-                .body(
-                    disciplinaService.findAll()
-                );
+            response = DataResponse.getSuccess(
+                disciplinaService.findAll()
+            );
         } catch(Exception ex) {
-            return ResponseEntity
-                .badRequest()
-                .body(
-                    ex.getMessage()
-                );
+            response = DataResponse.getError();
         }
+
+        return ResponseEntity
+            .ok()
+            .body(
+                response
+            );
     }
 
     @GetMapping("/disciplinas/{id}")
-    public ResponseEntity<?> getDisciplina(@PathVariable String id) {
-        DataResponse response = new DataResponse();
+    public ResponseEntity<?> getDisciplina(@PathVariable String id) throws Exception {
+        DataResponse<?> response = new DataResponse<>();
+        Optional<Disciplina> disciplina = disciplinaService.findById(id);
+
         try {
-            response.setMessage("Found data");
-            response.setCode(HttpStatus.FOUND.value());
-            response.setData(
-                Arrays.asList(
-                    disciplinaService.findById(id)
-                )
-            );
-
-            return ResponseEntity
-                .status(
-                    HttpStatus.FOUND
-
-                )
-                .body(
-                    response
-                );
+            response = DataResponse.getError();
         } catch(Exception ex) {
-            response.setMessage("Not found data");
-            response.setCode(HttpStatus.NOT_FOUND.value());
-            response.setData(
+            response = DataResponse.getSuccess(
                 Arrays.asList(
-                    ex.getMessage()
+                    disciplina
                 )
             );
-            return ResponseEntity
-                .status(
-                    HttpStatus.NOT_FOUND
-                )
-                .body(
-                    response
-                );
         }
+
+        return ResponseEntity
+            .ok()
+            .body(
+                response
+            );
     }
 
     @PostMapping("/disciplinas")
     public ResponseEntity<?> postDisciplinas(@RequestBody @Valid List<Disciplina> disciplinas) {
-        DataResponse response = new DataResponse();
+        DataResponse<?> response = new DataResponse<>();
 
         try {
-            response.setMessage("Data created");
-            response.setCode(HttpStatus.CREATED.value());
-            response.setData(
-                Arrays.asList(
-                    disciplinaService.saveDisciplinas(disciplinas)
-                )
+            response = DataResponse.postSuccess(
+                disciplinaService.saveDisciplinas(disciplinas)
             );
-            return ResponseEntity
-                .status(
-                    HttpStatus.CREATED
-                )
-                .body(
-                    response
-                );
         } catch(Exception ex) {
-            response.setMessage("Failed to create data");
-            response.setCode(HttpStatus.FAILED_DEPENDENCY.value());
-            response.setData(
-                Arrays.asList(
-                    ex.getMessage()
-                )
+            response = DataResponse.postError(
+                ex.getMessage()
             );
-
-            return ResponseEntity
-                .status(
-                    HttpStatus.FAILED_DEPENDENCY
-                )
-                .body(
-                    response
-                );
         }
+
+        return ResponseEntity
+            .ok()
+            .body(
+                response
+            );
     }
-
-
 }

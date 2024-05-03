@@ -17,11 +17,31 @@ public class RespostaService {
         this.respostaRepository = respostaRepository;
     }
 
-    public Optional<Resposta> findById(String id) {
-        return respostaRepository.findById(id);
+    public Optional<Resposta> findById(String id) throws Exception {
+        Optional<Resposta> resposta = respostaRepository.findById(id);
+
+        if(resposta.isEmpty()) {
+            throw new Exception("Data not found");
+        }
+
+        return resposta;
     }
 
-    public List<Resposta> findAll() {
-        return respostaRepository.findAll();
+    public List<Resposta> findAll() throws Exception {
+        List<Resposta> respostas = respostaRepository.findAll();
+
+        if(respostas.isEmpty()) {
+            throw new Exception("Data not found");
+        }
+
+        return respostas;
+    }
+
+    public List<Resposta> saveAll(List<Resposta> respostas) {
+        return respostaRepository.saveAll(respostas);
+    }
+
+    public Resposta save(Resposta resposta) {
+        return respostaRepository.save(resposta);
     }
 }

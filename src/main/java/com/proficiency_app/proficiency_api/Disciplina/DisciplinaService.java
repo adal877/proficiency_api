@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.management.RuntimeErrorException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,11 +35,16 @@ public class DisciplinaService {
         return disciplinaRepository.findByName(name);
     }
 
-    public Optional<Disciplina> findById(String id) {
-        return disciplinaRepository.findById(id);
+    public Optional<Disciplina> findById(String id) throws Exception {
+        Optional<Disciplina> disciplina = disciplinaRepository.findById(id);
+        if(disciplina.isEmpty()) {
+            throw new Exception("Data not found");
+        }
+
+        return disciplina;
     }
 
-    public List<Disciplina> findByProfessorId(Professor professor) {
+    public List<Disciplina> findByProfessorId(Professor professor) throws Exception {
         return disciplinaRepository.findByProfessor(
             professorService.findById(
                 professor.getId()
@@ -45,11 +52,17 @@ public class DisciplinaService {
         );
     }
 
-    public List<Disciplina> findAll() {
-        return disciplinaRepository.findAll();
+    public List<Disciplina> findAll() throws Exception {
+        List<Disciplina> disciplinas = disciplinaRepository.findAll();
+
+        if(disciplinas.isEmpty()) {
+            throw new Exception("Data not found");
+        }
+
+        return disciplinas;
     }
 
-    public List<Disciplina> saveDisciplinas(List<Disciplina> disciplinas) {
+    public List<Disciplina> saveDisciplinas(List<Disciplina> disciplinas) throws Exception {
         List<Disciplina> disciplinasSaved = new ArrayList<Disciplina>();
 
         for(Disciplina disciplina : disciplinas) {

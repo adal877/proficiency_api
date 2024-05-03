@@ -17,16 +17,28 @@ public class ProfessorService {
         this.professorRepository = professorRepository;
     }
 
-    public Optional<Professor> findById(String id) {
-        return professorRepository.findById(id);
+    public Optional<Professor> findById(String id) throws Exception {
+        Optional<Professor> professor = professorRepository.findById(id);
+
+        if(professor.isEmpty()) {
+            throw new Exception("Data not found");
+        }
+
+        return professor;
     }
 
     public List<Professor> findByCode(String code) {
         return professorRepository.findByCode(code);
     }
 
-    public List<Professor> findAll() {
-        return professorRepository.findAll();
+    public List<Professor> findAll() throws Exception {
+        List<Professor> professors = professorRepository.findAll();
+
+        if(professors.isEmpty()) {
+            throw new Exception("Data not found");
+        }
+
+        return professors;
     }
 
     public List<Professor> saveAll(List<Professor> professors) {

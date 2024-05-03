@@ -17,14 +17,33 @@ public class QuestaoService {
         this.questaoRepository = questaoRepository;
     }
 
-    public Optional<Questao> findById(String id) {
-        return questaoRepository.findById(id);
+    public Optional<Questao> findById(String id) throws Exception {
+        Optional<Questao> questao = questaoRepository.findById(id);
+
+        if(questao.isEmpty()) {
+            throw new Exception("Data not found");
+        }
+
+        return questao;
     }
 
-    public List<Questao> findAll() {
-        return questaoRepository.findAll();
+    public List<Questao> findAll() throws Exception {
+        List<Questao> questoes = questaoRepository.findAll();
+
+        if(questoes.isEmpty()) {
+            throw new Exception("Data not found");
+        }
+
+        return questoes;
     }
 
+    public List<Questao> saveAll(List<Questao> questoes) {
+        return questaoRepository.saveAll(questoes);
+    }
+
+    public Questao save(Questao questao) {
+        return questaoRepository.save(questao);
+    }
     /*
     public Optional<Questao> findByType(String tipoQuestao) {
         return questaoRepository.findByTipoQuestao(tipoQuestao);

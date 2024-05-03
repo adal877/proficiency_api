@@ -1,50 +1,44 @@
-package com.proficiency_app.proficiency_api.Professor;
-
-import org.springframework.web.bind.annotation.RestController;
-
-import com.proficiency_app.proficiency_api.Data.DataResponse;
-
-import jakarta.validation.Valid;
-import jakarta.websocket.server.PathParam;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+package com.proficiency_app.proficiency_api.Resposta;
 
 import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.proficiency_app.proficiency_api.Data.DataResponse;
+
+import jakarta.validation.Valid;
 
 
 
 
 @RestController
 @RequestMapping("/api")
-public class ProfessorController {
+public class RespostaController {
     @Autowired
-    ProfessorService professorService;
+    RespostaService respostaService;
 
-    public ProfessorController(
-        ProfessorService professorService
+    public RespostaController(
+        RespostaService respostaService
     ) {
-        this.professorService = professorService;
+        this.respostaService = respostaService;
     }
 
-    @GetMapping("/professores")
-    public ResponseEntity<?> getProfessors() {
+    @GetMapping("/respostas")
+    public ResponseEntity<?> getQuestoes() {
         DataResponse<?> response = new DataResponse<>();
 
         try {
             response = DataResponse.getSuccess(
-                professorService.findAll()
+                respostaService.findAll()
             );
         } catch(Exception ex) {
             response = DataResponse.getError();
@@ -57,14 +51,14 @@ public class ProfessorController {
             );
     }
 
-    @GetMapping("/professores/{id}")
-    public ResponseEntity<?> getProfessor(@PathVariable String id) {
+    @GetMapping("/respostas/{id}")
+    public ResponseEntity<?> getResposta(@PathVariable String id) {
         DataResponse<?> response = new DataResponse<>();
 
         try {
             response = DataResponse.getSuccess(
                 Arrays.asList(
-                    professorService.findById(id)
+                    respostaService.findById(id)
                 )
             );
         } catch(Exception ex) {
@@ -78,13 +72,13 @@ public class ProfessorController {
             );
     }
 
-    @PostMapping("/professores")
-    public ResponseEntity<?> postProfessors(@RequestBody @Valid List<Professor> professors) {
+    @PostMapping("/respostas")
+    public ResponseEntity<?> postRespostas(@RequestBody @Valid List<Resposta> respostas) {
         DataResponse<?> response = new DataResponse<>();
 
         try {
             response = DataResponse.postSuccess(
-                professorService.saveAll(professors)
+                respostaService.saveAll(respostas)
             );
         } catch(Exception ex) {
             response = DataResponse.postError(
@@ -99,4 +93,3 @@ public class ProfessorController {
             );
     }
 }
-
