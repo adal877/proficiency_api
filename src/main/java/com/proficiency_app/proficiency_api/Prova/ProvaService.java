@@ -6,15 +6,24 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.proficiency_app.proficiency_api.Questao.QuestaoService;
+
+import jakarta.transaction.Transactional;
+
 @Service
 public class ProvaService {
     @Autowired
     private ProvaRepository provaRepository;
 
+    @Autowired
+    private QuestaoService questaoService;
+
     public ProvaService(
-        ProvaRepository provaRepository
+        ProvaRepository provaRepository,
+        QuestaoService questaoService
     ) {
         this.provaRepository = provaRepository;
+        this.questaoService  = questaoService;
     }
 
     public Optional<Prova> findById(String id) throws Exception {
@@ -53,5 +62,30 @@ public class ProvaService {
 
     public Prova save(Prova prova) {
         return provaRepository.save(prova);
+    }
+
+    @Transactional
+    public Prova criarOuAtualizarProva(ProvaDTO provaRequestDto) {
+        Prova prova = new Prova();
+        if (provaRequestDto.getId() != null) {
+            prova = provaRepository.findById(provaRequestDto.getId())
+                .orElseThrow();
+        }
+
+        prova.setName(provaRequestDto.getName());
+        prova.setProfessor(provaRequestDto.getProfessor());
+        prova.setQuestoes(questaoService.criarOuAtualizarQuestoes(provaRequestDto.getQuestoes(), prova));
+
+        return provaRepository.save(prova);
+    }
+
+    @Transactional
+    public boolean deletarProva(String id) {
+        Prova prova = provaRepository.findById(id).orElse(null);
+        if (prova != null) {
+            provaRepository.delete(prova);
+            return true;
+        }
+        return false;
     }
 }
