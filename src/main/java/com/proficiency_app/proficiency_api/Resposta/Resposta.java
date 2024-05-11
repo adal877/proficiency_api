@@ -1,7 +1,5 @@
 package com.proficiency_app.proficiency_api.Resposta;
 
-import java.util.UUID;
-
 import org.hibernate.annotations.GenericGenerator;
 
 import com.proficiency_app.proficiency_api.Questao.Questao;

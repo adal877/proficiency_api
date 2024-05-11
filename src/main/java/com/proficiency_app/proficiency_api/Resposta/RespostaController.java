@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,9 +16,6 @@ import com.proficiency_app.proficiency_api.Data.DataResponse;
 
 import jakarta.validation.Valid;
 
-
-
-
 @RestController
 @RequestMapping("/api")
 public class RespostaController {
@@ -27,8 +23,7 @@ public class RespostaController {
     RespostaService respostaService;
 
     public RespostaController(
-        RespostaService respostaService
-    ) {
+            RespostaService respostaService) {
         this.respostaService = respostaService;
     }
 
@@ -38,17 +33,15 @@ public class RespostaController {
 
         try {
             response = DataResponse.getSuccess(
-                respostaService.findAll()
-            );
-        } catch(Exception ex) {
+                    respostaService.findAll());
+        } catch (Exception ex) {
             response = DataResponse.getError();
         }
 
         return ResponseEntity
-            .ok()
-            .body(
-                response
-            );
+                .ok()
+                .body(
+                        response);
     }
 
     @GetMapping("/respostas/{id}")
@@ -57,19 +50,16 @@ public class RespostaController {
 
         try {
             response = DataResponse.getSuccess(
-                Arrays.asList(
-                    respostaService.findById(id)
-                )
-            );
-        } catch(Exception ex) {
+                    Arrays.asList(
+                            respostaService.findById(id)));
+        } catch (Exception ex) {
             response = DataResponse.getError();
         }
 
         return ResponseEntity
-            .ok()
-            .body(
-                response
-            );
+                .ok()
+                .body(
+                        response);
     }
 
     @PostMapping("/respostas")
@@ -78,18 +68,15 @@ public class RespostaController {
 
         try {
             response = DataResponse.postSuccess(
-                respostaService.saveAll(respostas)
-            );
-        } catch(Exception ex) {
+                    respostaService.saveAll(respostas));
+        } catch (Exception ex) {
             response = DataResponse.postError(
-                ex.getMessage()
-            );
+                    ex.getMessage());
         }
 
         return ResponseEntity
-            .ok()
-            .body(
-                response
-            );
+                .ok()
+                .body(
+                        response);
     }
 }

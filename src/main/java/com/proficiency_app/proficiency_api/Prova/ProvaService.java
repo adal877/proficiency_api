@@ -1,11 +1,14 @@
 package com.proficiency_app.proficiency_api.Prova;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.proficiency_app.proficiency_api.Questao.Questao;
+import com.proficiency_app.proficiency_api.Questao.QuestaoDTO;
 import com.proficiency_app.proficiency_api.Questao.QuestaoService;
 
 import jakarta.transaction.Transactional;
@@ -19,17 +22,16 @@ public class ProvaService {
     private QuestaoService questaoService;
 
     public ProvaService(
-        ProvaRepository provaRepository,
-        QuestaoService questaoService
-    ) {
+            ProvaRepository provaRepository,
+            QuestaoService questaoService) {
         this.provaRepository = provaRepository;
-        this.questaoService  = questaoService;
+        this.questaoService = questaoService;
     }
 
     public Optional<Prova> findById(String id) throws Exception {
         Optional<Prova> prova = provaRepository.findById(id);
 
-        if(prova.isEmpty()) {
+        if (prova.isEmpty()) {
             throw new Exception("Data not found");
         }
 
@@ -39,7 +41,7 @@ public class ProvaService {
     public List<Prova> findAll() throws Exception {
         List<Prova> provas = provaRepository.findAll();
 
-        if(provas.isEmpty()) {
+        if (provas.isEmpty()) {
             throw new Exception("Data not found");
         }
 
@@ -51,10 +53,10 @@ public class ProvaService {
     }
 
     /*
-    public List<Prova> findByQuestaoId(String questao_id) {
-        return provaRepository.findByQuestaoId(questao_id);
-    }
-    */
+     * public List<Prova> findByQuestaoId(String questao_id) {
+     * return provaRepository.findByQuestaoId(questao_id);
+     * }
+     */
 
     public List<Prova> saveAll(List<Prova> provas) {
         return provaRepository.saveAll(provas);
@@ -69,12 +71,20 @@ public class ProvaService {
         Prova prova = new Prova();
         if (provaRequestDto.getId() != null) {
             prova = provaRepository.findById(provaRequestDto.getId())
-                .orElseThrow();
+                    .orElseThrow();
         }
 
         prova.setName(provaRequestDto.getName());
         prova.setProfessor(provaRequestDto.getProfessor());
-        prova.setQuestoes(questaoService.criarOuAtualizarQuestoes(provaRequestDto.getQuestoes(), prova));
+
+        List<Questao> questoes = new ArrayList<>();
+
+        for (QuestaoDTO questao : provaRequestDto.getQuestoes()) {
+            questoes.add(
+                    questaoService.questaoDtoTOEntity(questao));
+        }
+
+        prova.setQuestao(questoes);
 
         return provaRepository.save(prova);
     }

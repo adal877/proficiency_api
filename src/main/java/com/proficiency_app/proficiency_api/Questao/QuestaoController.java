@@ -1,30 +1,20 @@
 package com.proficiency_app.proficiency_api.Questao;
 
-import org.springframework.web.bind.annotation.RestController;
-
-import com.proficiency_app.proficiency_api.Data.DataResponse;
-
-import jakarta.validation.Valid;
-import jakarta.websocket.server.PathParam;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.proficiency_app.proficiency_api.Data.DataResponse;
 
-
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
@@ -33,8 +23,7 @@ public class QuestaoController {
     QuestaoService questaoService;
 
     public QuestaoController(
-        QuestaoService questaoService
-    ) {
+            QuestaoService questaoService) {
         this.questaoService = questaoService;
     }
 
@@ -44,17 +33,15 @@ public class QuestaoController {
 
         try {
             response = DataResponse.getSuccess(
-                questaoService.findAll()
-            );
-        } catch(Exception ex) {
+                    questaoService.findAll());
+        } catch (Exception ex) {
             response = DataResponse.getError();
         }
 
         return ResponseEntity
-            .ok()
-            .body(
-                response
-            );
+                .ok()
+                .body(
+                        response);
     }
 
     @GetMapping("/questoes/{id}")
@@ -63,19 +50,16 @@ public class QuestaoController {
 
         try {
             response = DataResponse.getSuccess(
-                Arrays.asList(
-                    questaoService.findById(id)
-                )
-            );
-        } catch(Exception ex) {
+                    Arrays.asList(
+                            questaoService.findById(id)));
+        } catch (Exception ex) {
             response = DataResponse.getError();
         }
 
         return ResponseEntity
-            .ok()
-            .body(
-                response
-            );
+                .ok()
+                .body(
+                        response);
     }
 
     @PostMapping("/questoes")
@@ -84,19 +68,16 @@ public class QuestaoController {
 
         try {
             response = DataResponse.postSuccess(
-                questaoService.saveAll(questaos)
-            );
-        } catch(Exception ex) {
+                    questaoService.saveAll(questaos));
+        } catch (Exception ex) {
             response = DataResponse.postError(
-                ex.getMessage()
-            );
+                    ex.getMessage());
         }
 
         return ResponseEntity
-            .ok()
-            .body(
-                response
-            );
+                .ok()
+                .body(
+                        response);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.proficiency_app.proficiency_api.Questao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.proficiency_app.proficiency_api.Data.Data;
@@ -45,4 +46,10 @@ public class Questao extends Data {
     @OneToMany(mappedBy = "questao", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Resposta> respostas;
 
+    public void setResposta(Resposta resposta) {
+        if(this.respostas.isEmpty()) {
+            this.respostas = new ArrayList<>();
+        }
+        this.respostas.add(resposta);
+    }
 }

@@ -1,30 +1,20 @@
 package com.proficiency_app.proficiency_api.Professor;
 
-import org.springframework.web.bind.annotation.RestController;
-
-import com.proficiency_app.proficiency_api.Data.DataResponse;
-
-import jakarta.validation.Valid;
-import jakarta.websocket.server.PathParam;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.proficiency_app.proficiency_api.Data.DataResponse;
 
-
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
@@ -33,8 +23,7 @@ public class ProfessorController {
     ProfessorService professorService;
 
     public ProfessorController(
-        ProfessorService professorService
-    ) {
+            ProfessorService professorService) {
         this.professorService = professorService;
     }
 
@@ -44,17 +33,15 @@ public class ProfessorController {
 
         try {
             response = DataResponse.getSuccess(
-                professorService.findAll()
-            );
-        } catch(Exception ex) {
+                    professorService.findAll());
+        } catch (Exception ex) {
             response = DataResponse.getError();
         }
 
         return ResponseEntity
-            .ok()
-            .body(
-                response
-            );
+                .ok()
+                .body(
+                        response);
     }
 
     @GetMapping("/professores/{id}")
@@ -63,19 +50,16 @@ public class ProfessorController {
 
         try {
             response = DataResponse.getSuccess(
-                Arrays.asList(
-                    professorService.findById(id)
-                )
-            );
-        } catch(Exception ex) {
+                    Arrays.asList(
+                            professorService.findById(id)));
+        } catch (Exception ex) {
             response = DataResponse.getError();
         }
 
         return ResponseEntity
-            .ok()
-            .body(
-                response
-            );
+                .ok()
+                .body(
+                        response);
     }
 
     @PostMapping("/professores")
@@ -84,19 +68,15 @@ public class ProfessorController {
 
         try {
             response = DataResponse.postSuccess(
-                professorService.saveAll(professors)
-            );
-        } catch(Exception ex) {
+                    professorService.saveAll(professors));
+        } catch (Exception ex) {
             response = DataResponse.postError(
-                ex.getMessage()
-            );
+                    ex.getMessage());
         }
 
         return ResponseEntity
-            .ok()
-            .body(
-                response
-            );
+                .ok()
+                .body(
+                        response);
     }
 }
-

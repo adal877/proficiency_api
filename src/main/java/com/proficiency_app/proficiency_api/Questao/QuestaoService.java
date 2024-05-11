@@ -9,7 +9,7 @@ import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.proficiency_app.proficiency_api.Prova.Prova;
-import com.proficiency_app.proficiency_api.Resposta.Resposta;
+import com.proficiency_app.proficiency_api.Resposta.RespostaDTO;
 import com.proficiency_app.proficiency_api.Resposta.RespostaService;
 
 import jakarta.transaction.Transactional;
@@ -23,17 +23,16 @@ public class QuestaoService {
     private RespostaService respostaService;
 
     public QuestaoService(
-        QuestaoRepository questaoRepository,
-        RespostaService respostaService
-    ) {
+            QuestaoRepository questaoRepository,
+            RespostaService respostaService) {
         this.questaoRepository = questaoRepository;
-        this.respostaService   = respostaService;
+        this.respostaService = respostaService;
     }
 
     public Optional<Questao> findById(String id) throws Exception {
         Optional<Questao> questao = questaoRepository.findById(id);
 
-        if(questao.isEmpty()) {
+        if (questao.isEmpty()) {
             throw new Exception("Data not found");
         }
 
@@ -43,7 +42,7 @@ public class QuestaoService {
     public List<Questao> findAll() throws Exception {
         List<Questao> questoes = questaoRepository.findAll();
 
-        if(questoes.isEmpty()) {
+        if (questoes.isEmpty()) {
             throw new Exception("Data not found");
         }
 
@@ -66,12 +65,9 @@ public class QuestaoService {
             Questao questao = new Questao();
             if (questaoDto.getId() != null) {
                 questao = questaoRepository
-                    .findById(
-                        questaoDto.getId()
-                    )
-                    .orElseThrow(() ->
-                        new NotFoundException()
-                    );
+                        .findById(
+                                questaoDto.getId())
+                        .orElseThrow(() -> new NotFoundException());
             }
 
             questao.setTexto(questaoDto.getTexto());
@@ -79,8 +75,8 @@ public class QuestaoService {
             questao.setProva(prova);
             questao.setProfessor(prova.getProfessor()); // Associar professor da prova à questão
 
-            List<Resposta> respostasSalvas = respostaService.criarOuAtualizarRespostas(questaoDto.getRespostas(), questao);
-            questao.setRespostas(respostasSalvas);
+            questao.setRespostas(
+                    respostaService.criarOuAtualizarRespostas(questaoDto.getRespostas(), questao));
 
             questoesSalvas.add(questaoRepository.save(questao));
         }
@@ -93,16 +89,16 @@ public class QuestaoService {
         questao.setId(questaoDTO.getId());
         questao.setTexto(questaoDTO.getTexto());
         questao.setTipoQuestao(questaoDTO.getTipoQuestao());
-        questao.setRespostas(
-            questaoDTO.getRespostas()
-            .forEach()
-        );
+        for (RespostaDTO respostaDto : questaoDTO.getRespostas()) {
+            questao.setResposta(
+                    respostaService.respostaDtoToEntity(respostaDto));
+        }
         return questao;
     }
 
     /*
-    public Optional<Questao> findByType(String tipoQuestao) {
-        return questaoRepository.findByTipoQuestao(tipoQuestao);
-    }
-    */
+     * public Optional<Questao> findByType(String tipoQuestao) {
+     * return questaoRepository.findByTipoQuestao(tipoQuestao);
+     * }
+     */
 }
