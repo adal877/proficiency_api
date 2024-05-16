@@ -3,6 +3,8 @@ package com.proficiency_app.proficiency_api.Professor;
 import java.util.Arrays;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +19,9 @@ import com.proficiency_app.proficiency_api.Data.DataResponse;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/v1")
 public class ProfessorController {
+    final Logger logger = LoggerFactory.getLogger(ProfessorController.class);
     @Autowired
     ProfessorService professorService;
 
@@ -65,6 +68,8 @@ public class ProfessorController {
     @PostMapping("/professores")
     public ResponseEntity<?> postProfessors(@RequestBody @Valid List<Professor> professors) {
         DataResponse<?> response = new DataResponse<>();
+
+        logger.info("Payload - professores: {}", professors.toString());
 
         try {
             response = DataResponse.postSuccess(

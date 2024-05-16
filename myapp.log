@@ -1,0 +1,192 @@
+2024-05-15T19:32:59.926-03:00  INFO 5895 --- [proficiency_api] [restartedMain] c.p.p.ProficiencyApiApplication          : Starting ProficiencyApiApplication using Java 17.0.10 with PID 5895 (/home/adal/Documents/codes/java/spring-boot/proficiency_api/target/classes started by adal in /home/adal/Documents/codes/java/spring-boot/proficiency_api)
+2024-05-15T19:32:59.934-03:00  INFO 5895 --- [proficiency_api] [restartedMain] c.p.p.ProficiencyApiApplication          : No active profile set, falling back to 1 default profile: "default"
+2024-05-15T19:33:00.036-03:00  INFO 5895 --- [proficiency_api] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-05-15T19:33:00.037-03:00  INFO 5895 --- [proficiency_api] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-05-15T19:33:01.381-03:00  INFO 5895 --- [proficiency_api] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-15T19:33:01.533-03:00  INFO 5895 --- [proficiency_api] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 132 ms. Found 7 JPA repository interfaces.
+2024-05-15T19:33:03.080-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-15T19:33:03.098-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-15T19:33:03.099-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-15T19:33:03.185-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-15T19:33:03.186-03:00  INFO 5895 --- [proficiency_api] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3148 ms
+2024-05-15T19:33:03.718-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-15T19:33:03.800-03:00  INFO 5895 --- [proficiency_api] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-15T19:33:03.855-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-15T19:33:04.228-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-15T19:33:04.267-03:00  INFO 5895 --- [proficiency_api] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-15T19:33:04.725-03:00  INFO 5895 --- [proficiency_api] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@66868286
+2024-05-15T19:33:04.729-03:00  INFO 5895 --- [proficiency_api] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-15T19:33:04.805-03:00  WARN 5895 --- [proficiency_api] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-15T19:33:07.134-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-15T19:33:07.548-03:00  INFO 5895 --- [proficiency_api] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-15T19:33:08.341-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-15T19:33:09.126-03:00  WARN 5895 --- [proficiency_api] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-15T19:33:10.264-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-05-15T19:33:10.282-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-05-15T19:33:10.410-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-05-15T19:33:10.442-03:00  INFO 5895 --- [proficiency_api] [restartedMain] c.p.p.ProficiencyApiApplication          : Started ProficiencyApiApplication in 11.054 seconds (process running for 11.66)
+2024-05-15T19:52:51.409-03:00  INFO 5895 --- [proficiency_api] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-15T19:52:51.410-03:00  INFO 5895 --- [proficiency_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-15T19:52:51.412-03:00  INFO 5895 --- [proficiency_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-05-15T19:52:51.548-03:00  WARN 5895 --- [proficiency_api] [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unrecognized token 'object': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')]
+2024-05-15T20:01:37.121-03:00  INFO 5895 --- [proficiency_api] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 38 class path changes (0 additions, 38 deletions, 0 modifications)
+2024-05-15T20:01:37.155-03:00  INFO 5895 --- [proficiency_api] [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-15T20:01:37.163-03:00  INFO 5895 --- [proficiency_api] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-15T20:01:37.193-03:00  INFO 5895 --- [proficiency_api] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-15T20:01:41.023-03:00  INFO 5895 --- [proficiency_api] [restartedMain] c.p.p.ProficiencyApiApplication          : Starting ProficiencyApiApplication using Java 17.0.10 with PID 5895 (/home/adal/Documents/codes/java/spring-boot/proficiency_api/target/classes started by adal in /home/adal/Documents/codes/java/spring-boot/proficiency_api)
+2024-05-15T20:01:41.026-03:00  INFO 5895 --- [proficiency_api] [restartedMain] c.p.p.ProficiencyApiApplication          : No active profile set, falling back to 1 default profile: "default"
+2024-05-15T20:01:41.054-03:00  WARN 5895 --- [proficiency_api] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: I/O failure while processing configuration class [com.proficiency_app.proficiency_api.ProficiencyApiApplication]
+2024-05-15T20:01:41.075-03:00 ERROR 5895 --- [proficiency_api] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanDefinitionStoreException: I/O failure while processing configuration class [com.proficiency_app.proficiency_api.ProficiencyApiApplication]
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:251) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:197) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:165) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:416) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:289) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:349) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:118) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:788) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:606) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) ~[spring-boot-3.2.5.jar:3.2.5]
+	at com.proficiency_app.proficiency_api.ProficiencyApiApplication.main(ProficiencyApiApplication.java:21) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.2.5.jar:3.2.5]
+Caused by: java.io.FileNotFoundException: class path resource [com/proficiency_app/proficiency_api/configuration/CorsConfig.class] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:215) ~[spring-core-6.1.6.jar:6.1.6]
+	at org.springframework.core.type.classreading.SimpleMetadataReader.getClassReader(SimpleMetadataReader.java:54) ~[spring-core-6.1.6.jar:6.1.6]
+	at org.springframework.core.type.classreading.SimpleMetadataReader.<init>(SimpleMetadataReader.java:48) ~[spring-core-6.1.6.jar:6.1.6]
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:103) ~[spring-core-6.1.6.jar:6.1.6]
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.createMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:86) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.getMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:73) ~[spring-boot-3.2.5.jar:3.2.5]
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:81) ~[spring-core-6.1.6.jar:6.1.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:188) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:314) ~[spring-context-6.1.6.jar:6.1.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:246) ~[spring-context-6.1.6.jar:6.1.6]
+	... 20 common frames omitted
+
+2024-05-15T20:01:44.134-03:00  INFO 5895 --- [proficiency_api] [restartedMain] c.p.p.ProficiencyApiApplication          : Starting ProficiencyApiApplication using Java 17.0.10 with PID 5895 (/home/adal/Documents/codes/java/spring-boot/proficiency_api/target/classes started by adal in /home/adal/Documents/codes/java/spring-boot/proficiency_api)
+2024-05-15T20:01:44.134-03:00  INFO 5895 --- [proficiency_api] [restartedMain] c.p.p.ProficiencyApiApplication          : No active profile set, falling back to 1 default profile: "default"
+2024-05-15T20:01:44.567-03:00  INFO 5895 --- [proficiency_api] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-15T20:01:44.585-03:00  INFO 5895 --- [proficiency_api] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18 ms. Found 7 JPA repository interfaces.
+2024-05-15T20:01:44.835-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-15T20:01:44.837-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-15T20:01:44.837-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-15T20:01:44.859-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2024-05-15T20:01:44.859-03:00  INFO 5895 --- [proficiency_api] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 723 ms
+2024-05-15T20:01:45.075-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-15T20:01:45.081-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-15T20:01:45.088-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-15T20:01:45.089-03:00  INFO 5895 --- [proficiency_api] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-05-15T20:01:45.115-03:00  INFO 5895 --- [proficiency_api] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@711b5529
+2024-05-15T20:01:45.115-03:00  INFO 5895 --- [proficiency_api] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-05-15T20:01:45.117-03:00  WARN 5895 --- [proficiency_api] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-15T20:01:45.447-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-15T20:01:45.603-03:00  INFO 5895 --- [proficiency_api] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-15T20:01:45.901-03:00  WARN 5895 --- [proficiency_api] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-15T20:01:46.350-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-05-15T20:01:46.359-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-05-15T20:01:46.395-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-05-15T20:01:46.411-03:00  INFO 5895 --- [proficiency_api] [restartedMain] c.p.p.ProficiencyApiApplication          : Started ProficiencyApiApplication in 2.309 seconds (process running for 1727.629)
+2024-05-15T20:01:46.414-03:00  INFO 5895 --- [proficiency_api] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-05-15T20:07:56.599-03:00  INFO 5895 --- [proficiency_api] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-05-15T20:07:56.616-03:00  INFO 5895 --- [proficiency_api] [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-15T20:07:56.620-03:00  INFO 5895 --- [proficiency_api] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2024-05-15T20:07:56.632-03:00  INFO 5895 --- [proficiency_api] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2024-05-15T20:07:56.984-03:00  INFO 5895 --- [proficiency_api] [restartedMain] c.p.p.ProficiencyApiApplication          : Starting ProficiencyApiApplication using Java 17.0.10 with PID 5895 (/home/adal/Documents/codes/java/spring-boot/proficiency_api/target/classes started by adal in /home/adal/Documents/codes/java/spring-boot/proficiency_api)
+2024-05-15T20:07:56.985-03:00  INFO 5895 --- [proficiency_api] [restartedMain] c.p.p.ProficiencyApiApplication          : No active profile set, falling back to 1 default profile: "default"
+2024-05-15T20:07:57.308-03:00  INFO 5895 --- [proficiency_api] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-15T20:07:57.326-03:00  INFO 5895 --- [proficiency_api] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 7 JPA repository interfaces.
+2024-05-15T20:07:57.489-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-15T20:07:57.490-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-15T20:07:57.490-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-15T20:07:57.499-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2024-05-15T20:07:57.499-03:00  INFO 5895 --- [proficiency_api] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 507 ms
+2024-05-15T20:07:57.641-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-15T20:07:57.643-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-15T20:07:57.648-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-15T20:07:57.649-03:00  INFO 5895 --- [proficiency_api] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2024-05-15T20:07:57.668-03:00  INFO 5895 --- [proficiency_api] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@631c6357
+2024-05-15T20:07:57.668-03:00  INFO 5895 --- [proficiency_api] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2024-05-15T20:07:57.669-03:00  WARN 5895 --- [proficiency_api] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-15T20:07:57.834-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-15T20:07:57.932-03:00  INFO 5895 --- [proficiency_api] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-15T20:07:58.163-03:00  WARN 5895 --- [proficiency_api] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-15T20:07:58.546-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-05-15T20:07:58.559-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-05-15T20:07:58.610-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-05-15T20:07:58.632-03:00  INFO 5895 --- [proficiency_api] [restartedMain] c.p.p.ProficiencyApiApplication          : Started ProficiencyApiApplication in 1.737 seconds (process running for 2099.85)
+2024-05-15T20:07:58.636-03:00  INFO 5895 --- [proficiency_api] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-05-15T20:08:06.664-03:00  INFO 5895 --- [proficiency_api] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-15T20:08:06.665-03:00  INFO 5895 --- [proficiency_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-15T20:08:06.672-03:00  INFO 5895 --- [proficiency_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2024-05-15T20:08:06.693-03:00  WARN 5895 --- [proficiency_api] [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unrecognized token 'object': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')]
+2024-05-15T20:09:24.425-03:00  WARN 5895 --- [proficiency_api] [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unrecognized token 'object': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')]
+2024-05-15T21:26:08.956-03:00  INFO 5895 --- [proficiency_api] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 38 class path changes (0 additions, 0 deletions, 38 modifications)
+2024-05-15T21:26:08.961-03:00  INFO 5895 --- [proficiency_api] [Thread-16] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-15T21:26:08.963-03:00  INFO 5895 --- [proficiency_api] [Thread-16] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2024-05-15T21:26:08.966-03:00  INFO 5895 --- [proficiency_api] [Thread-16] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2024-05-15T21:26:09.069-03:00  INFO 5895 --- [proficiency_api] [restartedMain] c.p.p.ProficiencyApiApplication          : Starting ProficiencyApiApplication using Java 17.0.10 with PID 5895 (/home/adal/Documents/codes/java/spring-boot/proficiency_api/target/classes started by adal in /home/adal/Documents/codes/java/spring-boot/proficiency_api)
+2024-05-15T21:26:09.069-03:00  INFO 5895 --- [proficiency_api] [restartedMain] c.p.p.ProficiencyApiApplication          : No active profile set, falling back to 1 default profile: "default"
+2024-05-15T21:26:09.491-03:00  INFO 5895 --- [proficiency_api] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-15T21:26:09.509-03:00  INFO 5895 --- [proficiency_api] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18 ms. Found 7 JPA repository interfaces.
+2024-05-15T21:26:09.686-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-15T21:26:09.688-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-15T21:26:09.688-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-15T21:26:09.694-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2024-05-15T21:26:09.694-03:00  INFO 5895 --- [proficiency_api] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 620 ms
+2024-05-15T21:26:09.802-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-15T21:26:09.804-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-15T21:26:09.808-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-15T21:26:09.809-03:00  INFO 5895 --- [proficiency_api] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2024-05-15T21:26:09.822-03:00  INFO 5895 --- [proficiency_api] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5cbd526
+2024-05-15T21:26:09.822-03:00  INFO 5895 --- [proficiency_api] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2024-05-15T21:26:09.823-03:00  WARN 5895 --- [proficiency_api] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-15T21:26:09.952-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-15T21:26:10.024-03:00  INFO 5895 --- [proficiency_api] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-15T21:26:10.207-03:00  WARN 5895 --- [proficiency_api] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-15T21:26:10.495-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-05-15T21:26:10.500-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-05-15T21:26:10.522-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-05-15T21:26:10.533-03:00  INFO 5895 --- [proficiency_api] [restartedMain] c.p.p.ProficiencyApiApplication          : Started ProficiencyApiApplication in 1.498 seconds (process running for 6791.751)
+2024-05-15T21:26:10.535-03:00  INFO 5895 --- [proficiency_api] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-05-15T21:30:44.511-03:00  INFO 5895 --- [proficiency_api] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-05-15T21:30:44.515-03:00  INFO 5895 --- [proficiency_api] [Thread-20] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-15T21:30:44.516-03:00  INFO 5895 --- [proficiency_api] [Thread-20] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2024-05-15T21:30:44.519-03:00  INFO 5895 --- [proficiency_api] [Thread-20] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2024-05-15T21:30:44.607-03:00  INFO 5895 --- [proficiency_api] [restartedMain] c.p.p.ProficiencyApiApplication          : Starting ProficiencyApiApplication using Java 17.0.10 with PID 5895 (/home/adal/Documents/codes/java/spring-boot/proficiency_api/target/classes started by adal in /home/adal/Documents/codes/java/spring-boot/proficiency_api)
+2024-05-15T21:30:44.607-03:00  INFO 5895 --- [proficiency_api] [restartedMain] c.p.p.ProficiencyApiApplication          : No active profile set, falling back to 1 default profile: "default"
+2024-05-15T21:30:44.778-03:00  INFO 5895 --- [proficiency_api] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-15T21:30:44.788-03:00  INFO 5895 --- [proficiency_api] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 7 JPA repository interfaces.
+2024-05-15T21:30:44.898-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-15T21:30:44.899-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-15T21:30:44.899-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-15T21:30:44.904-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2024-05-15T21:30:44.904-03:00  INFO 5895 --- [proficiency_api] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 295 ms
+2024-05-15T21:30:45.001-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-15T21:30:45.002-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-15T21:30:45.005-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-15T21:30:45.006-03:00  INFO 5895 --- [proficiency_api] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2024-05-15T21:30:45.016-03:00  INFO 5895 --- [proficiency_api] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection com.mysql.cj.jdbc.ConnectionImpl@72c3d28a
+2024-05-15T21:30:45.016-03:00  INFO 5895 --- [proficiency_api] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2024-05-15T21:30:45.017-03:00  WARN 5895 --- [proficiency_api] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-15T21:30:45.120-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-15T21:30:45.197-03:00  INFO 5895 --- [proficiency_api] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-15T21:30:45.367-03:00  WARN 5895 --- [proficiency_api] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-15T21:30:45.650-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-05-15T21:30:45.666-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-05-15T21:30:45.690-03:00  INFO 5895 --- [proficiency_api] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-05-15T21:30:45.702-03:00  INFO 5895 --- [proficiency_api] [restartedMain] c.p.p.ProficiencyApiApplication          : Started ProficiencyApiApplication in 1.117 seconds (process running for 7066.919)
+2024-05-15T21:30:45.703-03:00  INFO 5895 --- [proficiency_api] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2024-05-15T21:30:53.643-03:00  INFO 5895 --- [proficiency_api] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-15T21:30:53.644-03:00  INFO 5895 --- [proficiency_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-15T21:30:53.648-03:00  INFO 5895 --- [proficiency_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2024-05-15T21:30:53.664-03:00  WARN 5895 --- [proficiency_api] [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unrecognized token 'object': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')]

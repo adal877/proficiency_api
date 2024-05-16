@@ -17,7 +17,7 @@ import com.proficiency_app.proficiency_api.Data.DataResponse;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/v1")
 public class QuestaoController {
     @Autowired
     QuestaoService questaoService;
