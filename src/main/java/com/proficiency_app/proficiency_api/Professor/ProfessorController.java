@@ -7,11 +7,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proficiency_app.proficiency_api.Data.DataResponse;
@@ -31,12 +33,18 @@ public class ProfessorController {
     }
 
     @GetMapping("/professores")
-    public ResponseEntity<?> getProfessors() {
+    public ResponseEntity<?> getActiveOnlyProfessors(@RequestParam(name = "active", required = false, defaultValue = "true") Boolean active) {
         DataResponse<?> response = new DataResponse<>();
 
         try {
-            response = DataResponse.getSuccess(
-                    professorService.findAll());
+            if(!active) {
+                response = DataResponse.getSuccess(
+                        professorService.findAll());
+            } else {
+                response = DataResponse.getSuccess(
+                    professorService.findByIsActive(active)
+                );
+            }
         } catch (Exception ex) {
             response = DataResponse.getError();
         }
@@ -67,9 +75,9 @@ public class ProfessorController {
 
     @PostMapping("/professores")
     public ResponseEntity<?> postProfessors(@RequestBody @Valid List<Professor> professors) {
-        DataResponse<?> response = new DataResponse<>();
+        logger.debug("Payload - professores: {}", professors);
 
-        logger.info("Payload - professores: {}", professors.toString());
+        DataResponse<?> response = new DataResponse<>();
 
         try {
             response = DataResponse.postSuccess(
@@ -83,5 +91,24 @@ public class ProfessorController {
                 .ok()
                 .body(
                         response);
+    }
+
+    @DeleteMapping("/professores/{id}")
+    public ResponseEntity<?> deleteProfessor(@PathVariable String id) {
+        DataResponse<?> response = new DataResponse<>();
+
+        try {
+            // professorService.deleteById(id);
+            professorService.fakeDeleteById(id);
+            response = DataResponse.deleteSuccess();
+        } catch (Exception e) {
+            response = DataResponse.deleteError();
+        }
+
+        return ResponseEntity
+                .ok()
+                .body(
+                        response);
+
     }
 }

@@ -40,6 +40,22 @@ public class DataResponse<T> {
         );
     }
 
+    public static <T> DataResponse<T> deleteSuccess() {
+        return new DataResponse<>(
+            "Data deleted",
+            HttpStatus.ACCEPTED.value(),
+            null
+        );
+    }
+
+    public static <T> DataResponse<T> deleteError() {
+        return new DataResponse<>(
+            "Failed to delete data",
+            HttpStatus.EXPECTATION_FAILED.value(),
+            null
+        );
+    }
+
     public static <T> DataResponse<T> error(String message, HttpStatus status) {
         return new DataResponse<>(message, status.value(), null);
     }

@@ -7,6 +7,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.proficiency_app.proficiency_api.Data.DataType;
+import com.proficiency_app.proficiency_api.Professor.Professor;
+import com.proficiency_app.proficiency_api.Professor.ProfessorService;
 import com.proficiency_app.proficiency_api.Questao.Questao;
 import com.proficiency_app.proficiency_api.Questao.QuestaoDTO;
 import com.proficiency_app.proficiency_api.Questao.QuestaoService;
@@ -21,11 +24,16 @@ public class ProvaService {
     @Autowired
     private QuestaoService questaoService;
 
+    @Autowired
+    private ProfessorService professorService;
+
     public ProvaService(
             ProvaRepository provaRepository,
-            QuestaoService questaoService) {
-        this.provaRepository = provaRepository;
-        this.questaoService = questaoService;
+            QuestaoService questaoService,
+            ProfessorService professorService) {
+        this.provaRepository  = provaRepository;
+        this.questaoService   = questaoService;
+        this.professorService = professorService;
     }
 
     public Optional<Prova> findById(String id) throws Exception {
@@ -58,7 +66,15 @@ public class ProvaService {
      * }
      */
 
-    public List<Prova> saveAll(List<Prova> provas) {
+    public List<Prova> saveAll(List<Prova> provas) throws Exception {
+        for(Prova prova : provas) {
+            Optional<Professor> professor = professorService.findById(
+                prova.getProfessor().getId()
+            );
+
+            prova.setProfessor(professor.get());
+            prova.setRecordType(DataType.QUESTAO);
+        }
         return provaRepository.saveAll(provas);
     }
 

@@ -33,34 +33,34 @@ public class Data {
     private String id;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private Date created_at;
+    @Column(name = "createdAt", nullable = false, updatable = false)
+    private Date createdAt;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updated_at", nullable = false)
-    private Date updated_at;
+    @Column(name = "updatedAt", nullable = false)
+    private Date updatedAt;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "record_type", nullable = false)
-    private DataType record_type;
+    @Column(name = "recordType", nullable = false)
+    private DataType recordType;
 
-    @Column(name = "is_active", nullable = false)
-    private Boolean is_active;
+    @Column(name = "isActive", nullable = false)
+    private Boolean isActive;
 
     @PrePersist
     protected void onCreate() {
-        created_at = new Date();
-        updated_at = new Date();
-        is_active  = true;
+        createdAt = new Date();
+        updatedAt = new Date();
+        isActive  = true;
     }
 
     @PreUpdate
     protected void onUpdate() {
-        updated_at = new Date();
+        updatedAt = new Date();
     }
 
     @PreDestroy
     protected void onDestroy() {
-        is_active = false;
+        isActive = false;
     }
 }

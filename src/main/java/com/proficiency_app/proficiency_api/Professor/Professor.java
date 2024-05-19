@@ -1,9 +1,14 @@
 package com.proficiency_app.proficiency_api.Professor;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.proficiency_app.proficiency_api.Data.Data;
+import com.proficiency_app.proficiency_api.Disciplina.Disciplina;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
@@ -35,6 +40,10 @@ public class Professor extends Data {
 
     @Column(name = "password", nullable = false)
     private String password;
+
+    @OneToMany(mappedBy = "professor")
+    @JsonManagedReference
+    private List<Disciplina> disciplinas;
 
     @PrePersist
     protected void prePersist() {

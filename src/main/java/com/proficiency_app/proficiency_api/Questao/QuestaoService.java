@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.proficiency_app.proficiency_api.Data.DataType;
 import com.proficiency_app.proficiency_api.Prova.Prova;
 import com.proficiency_app.proficiency_api.Resposta.RespostaDTO;
 import com.proficiency_app.proficiency_api.Resposta.RespostaService;
@@ -26,7 +27,7 @@ public class QuestaoService {
             QuestaoRepository questaoRepository,
             RespostaService respostaService) {
         this.questaoRepository = questaoRepository;
-        this.respostaService = respostaService;
+        this.respostaService   = respostaService;
     }
 
     public Optional<Questao> findById(String id) throws Exception {
@@ -49,7 +50,10 @@ public class QuestaoService {
         return questoes;
     }
 
-    public List<Questao> saveAll(List<Questao> questoes) {
+    public List<Questao> saveAll(List<Questao> questoes) throws Exception {
+        for(Questao questao : questoes) {
+            questao.setRecordType(DataType.RESPOSTA);
+        }
         return questaoRepository.saveAll(questoes);
     }
 

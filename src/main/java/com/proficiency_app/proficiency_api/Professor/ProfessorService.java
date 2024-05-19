@@ -6,21 +6,22 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.proficiency_app.proficiency_api.Data.DataType;
+
 @Service
 public class ProfessorService {
     @Autowired
     private ProfessorRepository professorRepository;
 
     public ProfessorService(
-        ProfessorRepository professorRepository
-    ) {
+            ProfessorRepository professorRepository) {
         this.professorRepository = professorRepository;
     }
 
     public Optional<Professor> findById(String id) throws Exception {
         Optional<Professor> professor = professorRepository.findById(id);
 
-        if(professor.isEmpty()) {
+        if (professor.isEmpty()) {
             throw new Exception("Data not found");
         }
 
@@ -34,18 +35,37 @@ public class ProfessorService {
     public List<Professor> findAll() throws Exception {
         List<Professor> professors = professorRepository.findAll();
 
-        if(professors.isEmpty()) {
+        if (professors.isEmpty()) {
             throw new Exception("Data not found");
         }
 
         return professors;
     }
 
+    public List<Professor> findByIsActive(Boolean isActive) {
+        return professorRepository.findByIsActive(isActive);
+    }
+
     public List<Professor> saveAll(List<Professor> professors) {
+        for (Professor professor : professors) {
+            professor.setRecordType(DataType.PROFESSOR);
+        }
         return professorRepository.saveAll(professors);
     }
 
     public Professor save(Professor professor) {
         return professorRepository.save(professor);
     }
+
+    public void deleteById(String id) {
+        professorRepository.deleteById(id);
+    }
+
+    public void fakeDeleteById(String id) {
+        Professor professor = professorRepository.findById(id).get();
+        professor.setIsActive(false);
+
+        professorRepository.save(professor);
+    }
+
 }
