@@ -1,5 +1,6 @@
-package com.proficiency_app.proficiency_api.Questao;
+package com.proficiency_app.proficiency_api.Question;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,27 +14,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proficiency_app.proficiency_api.Data.DataResponse;
+import com.proficiency_app.proficiency_api.Image.ImageService;
 
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1")
-public class QuestaoController {
+public class QuestionController {
     @Autowired
-    QuestaoService questaoService;
+    QuestionService questoeservice;
 
-    public QuestaoController(
-            QuestaoService questaoService) {
-        this.questaoService = questaoService;
+    @Autowired
+    ImageService ImageService;
+
+    public QuestionController(
+            QuestionService questoeservice,
+            ImageService ImageService) {
+        this.questoeservice = questoeservice;
+        this.ImageService  = ImageService;
     }
 
-    @GetMapping("/questoes")
+    @GetMapping("/questions")
     public ResponseEntity<?> getQuestoes() {
         DataResponse<?> response = new DataResponse<>();
 
         try {
+            /*
             response = DataResponse.getSuccess(
-                    questaoService.findAll());
+                    questoeservice.findAll());
+                    */
+            response = DataResponse.getSuccess(
+                questoeservice.getAllQuestoes()
+            );
         } catch (Exception ex) {
             response = DataResponse.getError();
         }
@@ -44,14 +56,14 @@ public class QuestaoController {
                         response);
     }
 
-    @GetMapping("/questoes/{id}")
+    @GetMapping("/questions/{id}")
     public ResponseEntity<?> getQuestao(@PathVariable String id) {
         DataResponse<?> response = new DataResponse<>();
 
         try {
             response = DataResponse.getSuccess(
                     Arrays.asList(
-                            questaoService.findById(id)));
+                            questoeservice.findById(id)));
         } catch (Exception ex) {
             response = DataResponse.getError();
         }
@@ -62,13 +74,18 @@ public class QuestaoController {
                         response);
     }
 
-    @PostMapping("/questoes")
-    public ResponseEntity<?> postQuestaos(@RequestBody @Valid List<Questao> questaos) {
+    @PostMapping("/question")
+    public ResponseEntity<?> postquestoe(@RequestBody @Valid Question question) {
+        return postquestoes(new ArrayList<>(List.of(question)));
+    }
+
+    @PostMapping("/questions")
+    public ResponseEntity<?> postquestoes(@RequestBody @Valid List<Question> questions) {
         DataResponse<?> response = new DataResponse<>();
 
         try {
             response = DataResponse.postSuccess(
-                    questaoService.saveAll(questaos));
+                    questoeservice.saveAll(questions));
         } catch (Exception ex) {
             response = DataResponse.postError(
                     ex.getMessage());

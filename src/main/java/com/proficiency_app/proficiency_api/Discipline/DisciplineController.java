@@ -1,7 +1,9 @@
-package com.proficiency_app.proficiency_api.Resposta;
+package com.proficiency_app.proficiency_api.Discipline;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,22 +20,22 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1")
-public class RespostaController {
+public class DisciplineController {
     @Autowired
-    RespostaService respostaService;
+    DisciplineService disciplinaService;
 
-    public RespostaController(
-            RespostaService respostaService) {
-        this.respostaService = respostaService;
+    public DisciplineController(
+            DisciplineService disciplinaService) {
+        this.disciplinaService = disciplinaService;
     }
 
-    @GetMapping("/respostas")
-    public ResponseEntity<?> getQuestoes() {
+    @GetMapping("/disciplines")
+    public ResponseEntity<?> getDisciplinas() {
         DataResponse<?> response = new DataResponse<>();
 
         try {
             response = DataResponse.getSuccess(
-                    respostaService.findAll());
+                    disciplinaService.findAll());
         } catch (Exception ex) {
             response = DataResponse.getError();
         }
@@ -44,16 +46,17 @@ public class RespostaController {
                         response);
     }
 
-    @GetMapping("/respostas/{id}")
-    public ResponseEntity<?> getResposta(@PathVariable String id) {
+    @GetMapping("/disciplines/{id}")
+    public ResponseEntity<?> getDisciplina(@PathVariable String id) throws Exception {
         DataResponse<?> response = new DataResponse<>();
+        Optional<Discipline> discipline = disciplinaService.findById(id);
 
         try {
+            response = DataResponse.getError();
+        } catch (Exception ex) {
             response = DataResponse.getSuccess(
                     Arrays.asList(
-                            respostaService.findById(id)));
-        } catch (Exception ex) {
-            response = DataResponse.getError();
+                            discipline));
         }
 
         return ResponseEntity
@@ -62,13 +65,18 @@ public class RespostaController {
                         response);
     }
 
-    @PostMapping("/respostas")
-    public ResponseEntity<?> postRespostas(@RequestBody @Valid List<Resposta> respostas) {
+    @PostMapping("/discipline")
+    public ResponseEntity<?> postDisciplina(@RequestBody @Valid Discipline discipline) {
+        return postDisciplinas(new ArrayList<>(List.of(discipline)));
+    }
+
+    @PostMapping("/disciplines")
+    public ResponseEntity<?> postDisciplinas(@RequestBody @Valid List<Discipline> disciplines) {
         DataResponse<?> response = new DataResponse<>();
 
         try {
             response = DataResponse.postSuccess(
-                    respostaService.saveAll(respostas));
+                    disciplinaService.saveDisciplinas(disciplines));
         } catch (Exception ex) {
             response = DataResponse.postError(
                     ex.getMessage());

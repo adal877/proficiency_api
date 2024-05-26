@@ -1,5 +1,6 @@
-package com.proficiency_app.proficiency_api.Prova;
+package com.proficiency_app.proficiency_api.Exam;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,16 +19,16 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1")
-public class ProvaController {
+public class ExamController {
     @Autowired
-    ProvaService provaService;
+    ExamService provaService;
 
-    public ProvaController(
-            ProvaService provaService) {
+    public ExamController(
+            ExamService provaService) {
         this.provaService = provaService;
     }
 
-    @GetMapping("/provas")
+    @GetMapping("/exams")
     public ResponseEntity<?> getProvas() {
         DataResponse<?> response = new DataResponse<>();
 
@@ -44,7 +45,7 @@ public class ProvaController {
                         response);
     }
 
-    @GetMapping("/provas/{id}")
+    @GetMapping("/exams/{id}")
     public ResponseEntity<?> getProva(@PathVariable String id) {
         DataResponse<?> response = new DataResponse<>();
 
@@ -62,13 +63,18 @@ public class ProvaController {
                         response);
     }
 
-    @PostMapping("/provas")
-    public ResponseEntity<?> postProvas(@RequestBody @Valid List<Prova> provas) {
+    @PostMapping("/exam")
+    public ResponseEntity<?> postExam(@RequestBody @Valid Exam exam) {
+        return postExam(new ArrayList<>(List.of(exam)));
+    }
+
+    @PostMapping("/exams")
+    public ResponseEntity<?> postExam(@RequestBody @Valid List<Exam> exams) {
         DataResponse<?> response = new DataResponse<>();
 
         try {
             response = DataResponse.postSuccess(
-                    provaService.saveAll(provas));
+                    provaService.saveAll(exams));
         } catch (Exception ex) {
             response = DataResponse.postError(
                     ex.getMessage());

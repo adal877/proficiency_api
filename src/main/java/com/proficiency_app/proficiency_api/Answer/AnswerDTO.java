@@ -1,4 +1,4 @@
-package com.proficiency_app.proficiency_api.Resposta;
+package com.proficiency_app.proficiency_api.Answer;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,10 +9,11 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class RespostaDTO {
+public class AnswerDTO {
 
     private String id;
     private String texto;
     private Boolean correta;
-    private TipoResposta tipoResposta;
+    private AnswerType tipoResposta;
+    private String questaoId;
 }

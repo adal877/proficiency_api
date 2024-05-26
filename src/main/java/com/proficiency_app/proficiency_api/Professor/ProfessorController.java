@@ -1,5 +1,6 @@
 package com.proficiency_app.proficiency_api.Professor;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class ProfessorController {
         this.professorService = professorService;
     }
 
-    @GetMapping("/professores")
+    @GetMapping("/professors")
     public ResponseEntity<?> getActiveOnlyProfessors(@RequestParam(name = "active", required = false, defaultValue = "true") Boolean active) {
         DataResponse<?> response = new DataResponse<>();
 
@@ -55,7 +56,7 @@ public class ProfessorController {
                         response);
     }
 
-    @GetMapping("/professores/{id}")
+    @GetMapping("/professors/{id}")
     public ResponseEntity<?> getProfessor(@PathVariable String id) {
         DataResponse<?> response = new DataResponse<>();
 
@@ -73,9 +74,14 @@ public class ProfessorController {
                         response);
     }
 
-    @PostMapping("/professores")
+    @PostMapping("/professor")
+    public ResponseEntity<?> postProfessor(@RequestBody @Valid Professor professor) {
+        return postProfessors(new ArrayList<>(List.of(professor)));
+    }
+
+    @PostMapping("/professors")
     public ResponseEntity<?> postProfessors(@RequestBody @Valid List<Professor> professors) {
-        logger.debug("Payload - professores: {}", professors);
+        logger.debug("Payload - professors: {}", professors);
 
         DataResponse<?> response = new DataResponse<>();
 
@@ -93,7 +99,7 @@ public class ProfessorController {
                         response);
     }
 
-    @DeleteMapping("/professores/{id}")
+    @DeleteMapping("/professors/{id}")
     public ResponseEntity<?> deleteProfessor(@PathVariable String id) {
         DataResponse<?> response = new DataResponse<>();
 
