@@ -6,8 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.proficiency_app.proficiency_api.Data.DataType;
-
 @Service
 public class ProfessorService {
     @Autowired
@@ -47,9 +45,6 @@ public class ProfessorService {
     }
 
     public List<Professor> saveAll(List<Professor> professors) {
-        for (Professor professor : professors) {
-            professor.setRecordType(DataType.PROFESSOR);
-        }
         return professorRepository.saveAll(professors);
     }
 

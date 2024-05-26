@@ -7,7 +7,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.proficiency_app.proficiency_api.Data.DataType;
 import com.proficiency_app.proficiency_api.Professor.Professor;
 import com.proficiency_app.proficiency_api.Professor.ProfessorService;
 
@@ -58,8 +57,6 @@ public class DisciplineService {
         for (Discipline discipline : disciplines) {
             Optional<Professor> professor = professorService.findById(discipline.getProfessor().getId());
             discipline.setProfessor(professor.get());
-            discipline.setRecordType(DataType.DISCIPLINA);
-
             disciplinasSaved.add(
                     disciplinaRepository.save(discipline));
         }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -66,6 +67,30 @@ public class ProfessorController {
                             professorService.findById(id)));
         } catch (Exception ex) {
             response = DataResponse.getError();
+        }
+
+        return ResponseEntity
+                .ok()
+                .body(
+                        response);
+    }
+
+    @PutMapping("/professor/{id}")
+    public ResponseEntity<?> putProfessor(@PathVariable String Id, @RequestBody @Valid Professor professor) {
+        DataResponse<?> response = new DataResponse<>();
+
+        try {
+            response =
+                DataResponse.postSuccess(
+                    List.of(
+                        professorService.save(
+                            professor
+                        )
+                    )
+                );
+        } catch (Exception ex) {
+            response = DataResponse.postError(
+                    ex.getMessage());
         }
 
         return ResponseEntity

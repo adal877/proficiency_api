@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import com.proficiency_app.proficiency_api.Answer.Answer;
 import com.proficiency_app.proficiency_api.Answer.AnswerDTO;
 import com.proficiency_app.proficiency_api.Answer.AnswerService;
-import com.proficiency_app.proficiency_api.Data.DataType;
 import com.proficiency_app.proficiency_api.Exam.Exam;
 import com.proficiency_app.proficiency_api.Exam.ExamDTO;
 import com.proficiency_app.proficiency_api.Exam.ExamRepository;
@@ -66,7 +65,6 @@ public class QuestionService {
 
     public List<Question> saveAll(List<Question> questions) throws Exception {
         for(Question question : questions) {
-            question.setRecordType(DataType.RESPOSTA);
             question.setImages(
                 ImageService.criarOuAtualizarImages(
                     question.getImages()

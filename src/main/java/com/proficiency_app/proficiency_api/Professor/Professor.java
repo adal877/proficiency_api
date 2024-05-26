@@ -1,5 +1,6 @@
 package com.proficiency_app.proficiency_api.Professor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -16,6 +17,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -54,22 +56,23 @@ public class Professor extends Data {
     private String password;
 
     @OneToMany(mappedBy = "professor")
-    private List<Discipline> disciplines;
+    private List<Discipline> disciplines = new ArrayList<>();
 
     @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL)
-    private List<Question> questions;
+    private List<Question> questions = new ArrayList<>();
 
     @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL)
-    private List<Answer> answers;
+    private List<Answer> answers = new ArrayList<>();
 
     @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL)
-    private List<Exam> exams;
+    private List<Exam> exams = new ArrayList<>();
 
     @Override
     @PrePersist
+    @PreUpdate
     protected void prePersist() {
         super.prePersist();
-        if(this.code.isEmpty()) {
+        if(this.code == null || this.code.isBlank()) {
             this.code = String.format(
                 "%s",
                 email
