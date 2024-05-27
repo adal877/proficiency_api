@@ -3,6 +3,7 @@ package com.proficiency_app.proficiency_api.Image;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.proficiency_app.proficiency_api.Data.Data;
 import com.proficiency_app.proficiency_api.Data.DataType;
@@ -38,6 +39,10 @@ public class Image extends Data {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "image_url")
+    private String imageUrl;
+
+    @JsonIgnore
     @ManyToMany(mappedBy = "images")
     private List<Question> questions;
 

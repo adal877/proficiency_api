@@ -1,6 +1,7 @@
 package com.proficiency_app.proficiency_api.Discipline;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.proficiency_app.proficiency_api.Data.Data;
 import com.proficiency_app.proficiency_api.Data.DataType;
@@ -33,6 +34,7 @@ public class Discipline extends Data {
     @Column(name = "description")
     private String description;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "professor_id")
     private Professor professor;

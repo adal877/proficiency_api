@@ -56,14 +56,14 @@ public class Question extends Data {
         joinColumns = @JoinColumn(name = "question_id"),
         inverseJoinColumns = @JoinColumn(name = "image_id")
     )
-    @Size(max = 3, message = "Máximo de 3 Images por questão")
-    private List<Image> images;
+    @Size(max = 3, message = "Máximo de 3 Imagens por questão")
+    private List<Image> images = new ArrayList<>();
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Answer> answers = new ArrayList<>();
 
     @ManyToMany(mappedBy = "questions")
-    private List<Exam> exams;
+    private List<Exam> exams = new ArrayList<>();
 
     @Override
     @PrePersist
