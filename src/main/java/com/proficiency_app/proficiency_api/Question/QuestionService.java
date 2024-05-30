@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.proficiency_app.proficiency_api.Answer.Answer;
 import com.proficiency_app.proficiency_api.Answer.AnswerDTO;
@@ -14,7 +15,10 @@ import com.proficiency_app.proficiency_api.Answer.AnswerService;
 import com.proficiency_app.proficiency_api.Exam.Exam;
 import com.proficiency_app.proficiency_api.Exam.ExamDTO;
 import com.proficiency_app.proficiency_api.Exam.ExamRepository;
+import com.proficiency_app.proficiency_api.Image.Image;
 import com.proficiency_app.proficiency_api.Image.ImageService;
+import com.proficiency_app.proficiency_api.Professor.Professor;
+import com.proficiency_app.proficiency_api.Professor.ProfessorService;
 
 import jakarta.transaction.Transactional;
 
@@ -32,15 +36,20 @@ public class QuestionService {
     @Autowired
     private ImageService ImageService;
 
+    @Autowired
+    private ProfessorService professorService;
+
     public QuestionService(
             QuestionRepository questaoRepository,
             AnswerService respostaService,
             ExamRepository provaRepository,
-            ImageService ImageService) {
+            ImageService ImageService,
+            ProfessorService professorService) {
         this.questaoRepository = questaoRepository;
         this.respostaService   = respostaService;
         this.provaRepository   = provaRepository;
         this.ImageService     = ImageService;
+        this.professorService  = professorService;
     }
 
     public Optional<Question> findById(String id) throws Exception {
@@ -150,9 +159,69 @@ public class QuestionService {
     private ExamDTO convertToDTO(Exam exam) {
         ExamDTO dto = new ExamDTO();
         dto.setId(exam.getId());
-        dto.setName(exam.getName());
+        dto.setName(exam.getTitle());
         dto.setProfessorId(exam.getProfessor().getId());
         return dto;
+    }
+
+    public Question createQuestion(String content, QuestionType questionType, String professorId, List<MultipartFile> images) throws Exception {
+        Question question = new Question();
+        question.setContent(content);
+        question.setQuestionType(questionType);
+
+        Optional<Professor> professor = professorService.findById(professorId);
+        if (professor.isPresent()) {
+            question.setProfessor(professor.get());
+        } else {
+            throw new RuntimeException("Professor not found");
+        }
+
+        List<Image> imageEntities = new ArrayList<>();
+        for (MultipartFile image : images) {
+            if (image != null && !image.isEmpty()) {
+                Image imageEntity = new Image();
+                imageEntity.setRaw_data(image.getBytes());
+                imageEntity.setDescription(image.getOriginalFilename());
+                imageEntities.add(ImageService.save(imageEntity));
+            }
+        }
+
+        question.setImages(imageEntities);
+        return questaoRepository.save(question);
+    }
+
+    public Question updateQuestion(String id, String content, QuestionType questionType, String professorId, List<MultipartFile> images) throws Exception {
+        Optional<Question> existingQuestion = questaoRepository.findById(id);
+        if (existingQuestion.isPresent()) {
+            Question question = existingQuestion.get();
+            question.setContent(content);
+            question.setQuestionType(questionType);
+
+            Optional<Professor> professor = professorService.findById(professorId);
+            if (professor.isPresent()) {
+                question.setProfessor(professor.get());
+            } else {
+                throw new RuntimeException("Professor not found");
+            }
+
+            // Clear existing images
+            question.getImages().clear();
+
+            List<Image> imageEntities = new ArrayList<>();
+            for (MultipartFile image : images) {
+                if (image != null && !image.isEmpty()) {
+                    Image imageEntity = new Image();
+                    imageEntity.setRaw_data(image.getBytes());
+                    imageEntity.setDescription(image.getOriginalFilename());
+                    imageEntities.add(ImageService.save(imageEntity));
+                }
+            }
+
+            question.setImages(imageEntities);
+            return questaoRepository.save(question);
+        } else {
+            throw new RuntimeException("Question not found");
+        }
     }
 
     /*

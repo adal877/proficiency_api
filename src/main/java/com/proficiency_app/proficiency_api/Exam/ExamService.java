@@ -82,7 +82,7 @@ public class ExamService {
                     .orElseThrow(() -> new NotFoundException());
         }
 
-        exam.setName(provaRequestDto.getName());
+        exam.setTitle(provaRequestDto.getName());
         exam.setProfessor(
             professorService.findById(
                 provaRequestDto.getProfessorId()

@@ -5,12 +5,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.proficiency_app.proficiency_api.Data.Data;
 import com.proficiency_app.proficiency_api.Data.DataType;
+import com.proficiency_app.proficiency_api.Exam.Exam;
 import com.proficiency_app.proficiency_api.Professor.Professor;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import lombok.AllArgsConstructor;
@@ -38,6 +41,9 @@ public class Discipline extends Data {
     @ManyToOne
     @JoinColumn(name = "professor_id")
     private Professor professor;
+
+    @OneToOne(mappedBy = "discipline", cascade = CascadeType.ALL)
+    private Exam exam;
 
     @Column(name = "professor_email")
     private String professor_email;
