@@ -62,6 +62,7 @@ public class Question extends Data {
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Answer> answers = new ArrayList<>();
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "questions")
     private List<Exam> exams = new ArrayList<>();
 

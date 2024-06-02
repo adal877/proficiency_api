@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.proficiency_app.proficiency_api.Answer.Answer;
 import com.proficiency_app.proficiency_api.Data.Data;
@@ -51,16 +52,20 @@ public class Professor extends Data {
     @Column(name = "code", unique = true)
     private String code;
 
+    @JsonIgnore
     @Column(name = "password", nullable = false)
     @NotNull(message = "Senha é obrigatória")
     private String password;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "professor")
     private List<Discipline> disciplines = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL)
     private List<Question> questions = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL)
     private List<Answer> answers = new ArrayList<>();
 

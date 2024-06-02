@@ -45,6 +45,7 @@ public class Exam extends Data {
     @JoinColumn(name = "discipline_id", referencedColumnName = "id")
     private Discipline discipline;
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "exam_question",
             joinColumns = @JoinColumn(name = "exam_id"),

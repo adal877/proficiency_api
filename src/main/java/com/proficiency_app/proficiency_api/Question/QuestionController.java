@@ -78,11 +78,11 @@ public class QuestionController {
     public ResponseEntity<Question> createQuestion(
             @RequestParam("content") String content,
             @RequestParam("questionType") QuestionType questionType,
-            @RequestParam("professorId") Long professorId,
+            @RequestParam("professorId") String professorId,
             @RequestParam("image0") MultipartFile image0,
             @RequestParam("image1") MultipartFile image1,
             @RequestParam("image2") MultipartFile image2,
-            @RequestParam("image3") MultipartFile image3) {
+            @RequestParam("image3") MultipartFile image3) throws Exception {
         List<MultipartFile> images = List.of(image0, image1, image2, image3);
         Question question = questoeservice.createQuestion(content, questionType, professorId, images);
         return ResponseEntity.ok(question);
@@ -90,14 +90,14 @@ public class QuestionController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<Question> updateQuestion(
-            @PathVariable Long id,
+            @PathVariable String id,
             @RequestParam("content") String content,
             @RequestParam("questionType") QuestionType questionType,
-            @RequestParam("professorId") Long professorId,
+            @RequestParam("professorId") String professorId,
             @RequestParam("image0") MultipartFile image0,
             @RequestParam("image1") MultipartFile image1,
             @RequestParam("image2") MultipartFile image2,
-            @RequestParam("image3") MultipartFile image3) {
+            @RequestParam("image3") MultipartFile image3) throws Exception {
         List<MultipartFile> images = List.of(image0, image1, image2, image3);
         Question question = questoeservice.updateQuestion(id, content, questionType, professorId, images);
         return ResponseEntity.ok(question);
