@@ -36,6 +36,7 @@ public class Answer extends Data {
     @Column(name = "is_correct")
     private boolean isCorrect;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "question_id")
     private Question question;

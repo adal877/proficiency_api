@@ -3,6 +3,7 @@ package com.proficiency_app.proficiency_api.Exam;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +31,7 @@ public class ExamController {
 
     @GetMapping("/exams")
     public ResponseEntity<?> getProvas() {
-        DataResponse<?> response = new DataResponse<>();
+        DataResponse<Exam> response = new DataResponse<>();
 
         try {
             response = DataResponse.getSuccess(
@@ -47,7 +48,7 @@ public class ExamController {
 
     @GetMapping("/exams/{id}")
     public ResponseEntity<?> getProva(@PathVariable String id) {
-        DataResponse<?> response = new DataResponse<>();
+        DataResponse<Optional<Exam>> response = new DataResponse<>();
 
         try {
             response = DataResponse.getSuccess(
@@ -70,7 +71,7 @@ public class ExamController {
 
     @PostMapping("/exams")
     public ResponseEntity<?> postExam(@RequestBody @Valid List<Exam> exams) {
-        DataResponse<?> response = new DataResponse<>();
+        DataResponse<Exam> response = new DataResponse<>();
 
         try {
             response = DataResponse.postSuccess(

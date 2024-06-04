@@ -3,6 +3,7 @@ package com.proficiency_app.proficiency_api.Answer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +31,7 @@ public class AnswerController {
 
     @GetMapping("/answers")
     public ResponseEntity<?> getQuestoes() {
-        DataResponse<?> response = new DataResponse<>();
+        DataResponse<Answer> response = new DataResponse<>();
 
         try {
             response = DataResponse.getSuccess(
@@ -47,7 +48,7 @@ public class AnswerController {
 
     @GetMapping("/answers/{id}")
     public ResponseEntity<?> getResposta(@PathVariable String id) {
-        DataResponse<?> response = new DataResponse<>();
+        DataResponse<Optional<Answer>> response = new DataResponse<>();
 
         try {
             response = DataResponse.getSuccess(
@@ -70,7 +71,7 @@ public class AnswerController {
 
     @PostMapping("/answers")
     public ResponseEntity<?> postRespostas(@RequestBody @Valid List<Answer> answers) {
-        DataResponse<?> response = new DataResponse<>();
+        DataResponse<Answer> response = new DataResponse<>();
 
         try {
             response = DataResponse.postSuccess(

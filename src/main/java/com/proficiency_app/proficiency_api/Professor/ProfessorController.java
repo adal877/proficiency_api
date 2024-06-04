@@ -3,6 +3,7 @@ package com.proficiency_app.proficiency_api.Professor;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +37,7 @@ public class ProfessorController {
 
     @GetMapping("/professors")
     public ResponseEntity<?> getActiveOnlyProfessors(@RequestParam(name = "active", required = false, defaultValue = "true") Boolean active) {
-        DataResponse<?> response = new DataResponse<>();
+        DataResponse<Professor> response = new DataResponse<>();
 
         try {
             if(!active) {
@@ -59,7 +60,7 @@ public class ProfessorController {
 
     @GetMapping("/professors/{id}")
     public ResponseEntity<?> getProfessor(@PathVariable String id) {
-        DataResponse<?> response = new DataResponse<>();
+        DataResponse<Optional<Professor>> response = new DataResponse<>();
 
         try {
             response = DataResponse.getSuccess(
@@ -77,7 +78,7 @@ public class ProfessorController {
 
     @PutMapping("/professor/{id}")
     public ResponseEntity<?> putProfessor(@PathVariable String Id, @RequestBody @Valid Professor professor) {
-        DataResponse<?> response = new DataResponse<>();
+        DataResponse<Professor> response = new DataResponse<>();
 
         try {
             response =
@@ -108,7 +109,7 @@ public class ProfessorController {
     public ResponseEntity<?> postProfessors(@RequestBody @Valid List<Professor> professors) {
         logger.debug("Payload - professors: {}", professors);
 
-        DataResponse<?> response = new DataResponse<>();
+        DataResponse<Professor> response = new DataResponse<>();
 
         try {
             response = DataResponse.postSuccess(
@@ -126,7 +127,7 @@ public class ProfessorController {
 
     @DeleteMapping("/professors/{id}")
     public ResponseEntity<?> deleteProfessor(@PathVariable String id) {
-        DataResponse<?> response = new DataResponse<>();
+        DataResponse<Professor> response = new DataResponse<>();
 
         try {
             // professorService.deleteById(id);

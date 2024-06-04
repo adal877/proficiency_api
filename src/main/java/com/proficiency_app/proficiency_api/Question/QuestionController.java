@@ -2,6 +2,7 @@ package com.proficiency_app.proficiency_api.Question;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +36,7 @@ public class QuestionController {
 
     @GetMapping("/questions")
     public ResponseEntity<?> getQuestoes() {
-        DataResponse<?> response = new DataResponse<>();
+        DataResponse<Question> response = new DataResponse<>();
 
         try {
             /*
@@ -57,7 +58,7 @@ public class QuestionController {
 
     @GetMapping("/questions/{id}")
     public ResponseEntity<?> getQuestao(@PathVariable String id) {
-        DataResponse<?> response = new DataResponse<>();
+        DataResponse<Optional<Question>> response = new DataResponse<>();
 
         try {
             response = DataResponse.getSuccess(

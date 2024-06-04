@@ -31,7 +31,7 @@ public class DisciplineController {
 
     @GetMapping("/disciplines")
     public ResponseEntity<?> getDisciplinas() {
-        DataResponse<?> response = new DataResponse<>();
+        DataResponse<Discipline> response = new DataResponse<>();
 
         try {
             response = DataResponse.getSuccess(
@@ -48,7 +48,7 @@ public class DisciplineController {
 
     @GetMapping("/disciplines/{id}")
     public ResponseEntity<?> getDisciplina(@PathVariable String id) throws Exception {
-        DataResponse<?> response = new DataResponse<>();
+        DataResponse<Optional<Discipline>> response = new DataResponse<>();
         Optional<Discipline> discipline = disciplinaService.findById(id);
 
         try {
@@ -72,7 +72,7 @@ public class DisciplineController {
 
     @PostMapping("/disciplines")
     public ResponseEntity<?> postDisciplinas(@RequestBody @Valid List<Discipline> disciplines) {
-        DataResponse<?> response = new DataResponse<>();
+        DataResponse<Discipline> response = new DataResponse<>();
 
         try {
             response = DataResponse.postSuccess(
